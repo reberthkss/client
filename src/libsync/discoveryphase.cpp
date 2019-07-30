@@ -253,7 +253,7 @@ void DiscoverySingleDirectoryJob::start()
         this, &DiscoverySingleDirectoryJob::directoryListingIteratedSlot);
     QObject::connect(lsColJob, &LsColJob::finishedWithError, this, &DiscoverySingleDirectoryJob::lsJobFinishedWithErrorSlot);
     QObject::connect(lsColJob, &LsColJob::finishedWithoutError, this, &DiscoverySingleDirectoryJob::lsJobFinishedWithoutErrorSlot);
-    lsColJob->start();
+    QTimer::singleShot(5000, lsColJob, [=]() { lsColJob->start(); });
 
     _lsColJob = lsColJob;
 }
