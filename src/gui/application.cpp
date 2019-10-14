@@ -692,7 +692,7 @@ void Application::setupTranslations()
         lang = substLang(lang);
         const QString trPath = applicationTrPath();
         const QString trFile = QLatin1String("client_") + lang;
-        if (translator->load(trFile, trPath) || lang.startsWith(QLatin1String("en"))) {
+        if (translator->load(trFile, trPath) || lang.startsWith(QLatin1String("pt"))) {
             // Permissive approach: Qt and keychain translations
             // may be missing, but Qt translations must be there in order
             // for us to accept the language. Otherwise, we try with the next.
