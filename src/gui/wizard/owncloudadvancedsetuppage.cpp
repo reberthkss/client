@@ -46,8 +46,8 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
     _ui.setupUi(this);
 
     Theme *theme = Theme::instance();
-    setTitle(WizardCommon::titleTemplate().arg(tr("Connect to %1").arg(theme->appNameGUI())));
-    setSubTitle(WizardCommon::subTitleTemplate().arg(tr("Setup local folder options")));
+    setTitle(WizardCommon::titleTemplate().arg(tr("Conectar a %1").arg(theme->appNameGUI())));
+    setSubTitle(WizardCommon::subTitleTemplate().arg(tr("Configurar opções de pastas locais")));
 
     registerField(QLatin1String("OCSyncFromScratch"), _ui.cbSyncFromScratch);
 
@@ -56,7 +56,8 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
     setupCustomization();
 
     connect(_ui.pbSelectLocalFolder, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSelectFolder);
-    setButtonText(QWizard::NextButton, tr("Connect..."));
+    setButtonText(QWizard::NextButton, tr("Conectar..."));
+	setButtonText(QWizard::BackButton, tr("Voltar..."));
 
     connect(_ui.rSyncEverything, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSyncEverythingClicked);
     connect(_ui.rSelectiveSync, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSelectiveSyncClicked);
@@ -79,7 +80,7 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
         _ui.confTraillingSizeLabel->hide();
     }
 
-    _ui.rVirtualFileSync->setText(tr("Use &virtual files instead of downloading content immediately %1").arg(
+    _ui.rVirtualFileSync->setText(tr("Utilizar arquivos &virtuais para baixar imediatamente %1").arg(
                                       bestAvailableVfsMode() == Vfs::WindowsCfApi ? tr("(tech preview)") : tr("(experimental)")));
 }
 
@@ -88,6 +89,7 @@ void OwncloudAdvancedSetupPage::setupCustomization()
     // set defaults for the customize labels.
     _ui.topLabel->hide();
     _ui.bottomLabel->hide();
+	
 
     Theme *theme = Theme::instance();
     QVariant variant = theme->customMedia(Theme::oCSetupTop);
@@ -173,16 +175,16 @@ void OwncloudAdvancedSetupPage::updateStatus()
         if (_remoteFolder.isEmpty() || _remoteFolder == QLatin1String("/")) {
             t = "";
         } else {
-            t = Utility::escape(tr("%1 folder '%2' is synced to local folder '%3'")
+            t = Utility::escape(tr("%1 Pasta &apos;%2&apos; está sincronizada com pasta local &apos;%3&apos;")
                                     .arg(Theme::instance()->appName(), _remoteFolder,
                                         QDir::toNativeSeparators(locFolder)));
-            _ui.rSyncEverything->setText(tr("Sync the folder '%1'").arg(_remoteFolder));
+            _ui.rSyncEverything->setText(tr("Sincronizar a pasta &apos;%1&apos;").arg(_remoteFolder));
         }
 
         const bool dirNotEmpty(QDir(locFolder).entryList(QDir::AllEntries | QDir::NoDotAndDotDot).count() > 0);
         if (dirNotEmpty) {
-            t += tr("<p><small><strong>Warning:</strong> The local folder is not empty. "
-                    "Pick a resolution!</small></p>");
+            t += tr("&lt;p&gt;&lt;small&gt;&lt;strong&gt;Aviso:&lt;/strong&gt; A pasta local não está vazia. "
+                    "Escolha uma resolução!&lt;/small&gt;&lt;/p&gt;");
         }
         _ui.resolutionWidget->setVisible(dirNotEmpty);
     } else {
@@ -312,7 +314,7 @@ void OwncloudAdvancedSetupPage::setRemoteFolder(const QString &remoteFolder)
 
 void OwncloudAdvancedSetupPage::slotSelectFolder()
 {
-    QString dir = QFileDialog::getExistingDirectory(0, tr("Local Sync Folder"), QDir::homePath());
+    QString dir = QFileDialog::getExistingDirectory(0, tr("Sincronizar Pasta Local"), QDir::homePath());
     if (!dir.isEmpty()) {
         _ui.pbSelectLocalFolder->setText(dir);
         wizard()->setProperty("localFolder", dir);
