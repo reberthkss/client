@@ -86,9 +86,8 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     setOption(QWizard::NoCancelButton);
     setTitleFormat(Qt::RichText);
     setSubTitleFormat(Qt::RichText);
-    setButtonText(QWizard::NextButton);
-    setButtonText(QWizard::CloseButton);
-    setButtonText(QWizard::BackButton);
+    setButtonText(QWizard::NextButton,tr("proximo"));
+    setButtonText(QWizard::BackButton,tr("voltar"));
 }
 
 void OwncloudWizard::setAccount(AccountPtr account)

@@ -77,7 +77,7 @@ void OCC::OwncloudOAuthCredsPage::cleanupPage()
 {
     // The next or back button was activated, show the wizard again
 	setButtonText(QWizard::BackButton,tr("Voltar..."));
-	setButtonText(QWizard::NextButon,tr("Proximo..."));
+	setButtonText(QWizard::NextButton,tr("Proximo..."));
     wizard()->show();
     _asyncAuth.reset();
 }
