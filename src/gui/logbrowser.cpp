@@ -93,6 +93,7 @@ LogBrowser::LogBrowser(QWidget *parent)
     QDialogButtonBox *btnbox = new QDialogButtonBox;
     QPushButton *closeBtn = btnbox->addButton(QDialogButtonBox::Close);
 	
+	
     connect(closeBtn, &QAbstractButton::clicked, this, &QWidget::close);
 
     mainLayout->addStretch();
@@ -106,7 +107,7 @@ LogBrowser::LogBrowser(QWidget *parent)
     showLogWindow->setShortcut(QKeySequence("F12"));
     connect(showLogWindow, &QAction::triggered, this, &QWidget::close);
     addAction(showLogWindow);
-
+	setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
     ConfigFile cfg;
     cfg.restoreGeometry(this);
 }

@@ -56,6 +56,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QDesktopServices>
+#include <QDialogButtonBox>
 
 class QSocket;
 
@@ -138,8 +139,8 @@ bool Application::configVersionMigration()
                "<br>"
                "The current configuration file was already backed up to <i>%2</i>.")
                 .arg(boldMessage, backupFile));
-        box.addButton(tr("Quit"), QMessageBox::AcceptRole);
-        auto continueBtn = box.addButton(tr("Continue"), QMessageBox::DestructiveRole);
+        box.addButton(tr("Sair"), QMessageBox::AcceptRole);
+        auto continueBtn = box.addButton(tr("Continuar"), QMessageBox::DestructiveRole);
 
         box.exec();
         if (box.clickedButton() != continueBtn) {
@@ -384,6 +385,7 @@ void Application::slotAccountStateRemoved(AccountState *accountState)
         // about single account theming!
         OwncloudSetupWizard::runWizard(this, SLOT(slotownCloudWizardDone(int)));
     }
+	setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
 }
 
 void Application::slotAccountStateAdded(AccountState *accountState)

@@ -51,6 +51,7 @@
 #include <QToolTip>
 #include <qstringlistmodel.h>
 #include <qpropertyanimation.h>
+#include <QDialogButtonBox>
 
 #include "account.h"
 
@@ -184,6 +185,8 @@ AccountSettings::AccountSettings(AccountState *accountState, QWidget *parent)
 
     connect(&_quotaInfo, &QuotaInfo::quotaUpdated,
         this, &AccountSettings::slotUpdateQuota);
+
+		setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
 }
 
 
