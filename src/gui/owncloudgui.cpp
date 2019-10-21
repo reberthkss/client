@@ -96,7 +96,7 @@ ownCloudGui::ownCloudGui(Application *parent)
         this, &ownCloudGui::slotShowOptionalTrayMessage);
     connect(Logger::instance(), &Logger::guiMessage,
         this, &ownCloudGui::slotShowGuiMessage);
-		setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
+		
 }
 
 // This should rather be in application.... or rather in ConfigFile?

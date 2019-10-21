@@ -89,8 +89,10 @@ LogBrowser::LogBrowser(QWidget *parent)
         QDesktopServices::openUrl(QUrl::fromLocalFile(path));
     });
     mainLayout->addWidget(openFolderButton);
-
+	
     QDialogButtonBox *btnbox = new QDialogButtonBox;
+	setButtonText(QDialogButtonBox::Close,tr("fechar"));
+	
     QPushButton *closeBtn = btnbox->addButton(QDialogButtonBox::Close);
 	
 	
@@ -106,8 +108,9 @@ LogBrowser::LogBrowser(QWidget *parent)
     QAction *showLogWindow = new QAction(this);
     showLogWindow->setShortcut(QKeySequence("F12"));
     connect(showLogWindow, &QAction::triggered, this, &QWidget::close);
+	
     addAction(showLogWindow);
-	setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
+	
     ConfigFile cfg;
     cfg.restoreGeometry(this);
 }

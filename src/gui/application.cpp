@@ -385,7 +385,7 @@ void Application::slotAccountStateRemoved(AccountState *accountState)
         // about single account theming!
         OwncloudSetupWizard::runWizard(this, SLOT(slotownCloudWizardDone(int)));
     }
-	setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
+	
 }
 
 void Application::slotAccountStateAdded(AccountState *accountState)

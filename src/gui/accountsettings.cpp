@@ -186,7 +186,7 @@ AccountSettings::AccountSettings(AccountState *accountState, QWidget *parent)
     connect(&_quotaInfo, &QuotaInfo::quotaUpdated,
         this, &AccountSettings::slotUpdateQuota);
 
-		setButtonText(QDialogButtonBox::Close,tr("FECHAR"));
+		
 }
 
 
