@@ -72,6 +72,7 @@ void NotificationWidget::setActivity(const Activity &activity)
     if (activity._links.isEmpty()) {
         // in case there is no action defined, do a close button.
         QPushButton *b = _ui._buttonBox->addButton(QDialogButtonBox::Close);
+		b->setText(tr("fechar"));
         b->setDefault(true);
         connect(b, &QAbstractButton::clicked, this, &NotificationWidget::slotButtonClicked);
         _buttons.append(b);

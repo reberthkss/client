@@ -91,10 +91,10 @@ LogBrowser::LogBrowser(QWidget *parent)
     mainLayout->addWidget(openFolderButton);
 	
     QDialogButtonBox *btnbox = new QDialogButtonBox;
-	setButtonText(QDialogButtonBox::Close,tr("fechar"));
+	
 	
     QPushButton *closeBtn = btnbox->addButton(QDialogButtonBox::Close);
-	
+	closeBtn->setText(tr("FECHAR");
 	
     connect(closeBtn, &QAbstractButton::clicked, this, &QWidget::close);
 
