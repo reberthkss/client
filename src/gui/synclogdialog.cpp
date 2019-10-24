@@ -40,7 +40,7 @@ SyncLogDialog::SyncLogDialog(QWidget *parent, ProtocolWidget *protoWidget)
     }
 
     QPushButton *closeButton = _ui->buttonBox->button(QDialogButtonBox::Close);
-	closeButton->setText(tr("FECHAR");
+	closeButton->setText(tr("FECHAR"));
     if (closeButton) {
         connect(closeButton, &QAbstractButton::clicked, this, &QWidget::close);
     }
